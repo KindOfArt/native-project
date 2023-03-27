@@ -15,7 +15,11 @@ const RegistrationScreen = () => {
   return (
     <View style={styles.formThunk}>
       <View style={styles.photoThunc}>
-        <Image source={{ uri: "#" }} style={styles.photo} />
+        <Image
+          source={require("../../../assets/photo.jpg")}
+          resizeMode="cover"
+          style={styles.photo}
+        />
         <TouchableOpacity style={styles.addPhotoBtn}>
           <AddPhoto width={25} height={25} />
         </TouchableOpacity>
@@ -60,6 +64,7 @@ const styles = StyleSheet.create({
   photoThunc: {
     position: "relative",
     top: -60,
+    zIndex: 1,
 
     alignItems: "flex-end",
     justifyContent: "flex-end",
@@ -89,7 +94,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
   },
-  photo: {},
+  photo: {
+    borderRadius: 16,
+  },
   formThunk: {
     position: "relative",
     justifyContent: "center",
@@ -127,6 +134,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 19,
     marginBottom: 16,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.46,
+    shadowRadius: 11.14,
+
+    elevation: 17,
   },
   registrationBtnText: {
     textAlign: "center",

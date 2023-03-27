@@ -2,40 +2,44 @@ import {
   StyleSheet,
   Text,
   View,
-  ImageBackground,
   TextInput,
   Image,
   TouchableOpacity,
 } from "react-native";
+
 import React from "react";
 
-const bgImage = require("../../../assets/BgImage/BGimage.jpg");
+import AddPhoto from "../../../assets/add.svg";
 
 const RegistrationScreen = () => {
   return (
-    <View style={styles.container}>
-      <ImageBackground source={bgImage} resizeMode="cover" style={styles.image}>
-        <View style={styles.formThunk}>
-          <View style={styles.photoThunc}>
-            <Image source={{ uri: "#" }} style={styles.photo} />
-          </View>
-          <Text style={styles.title}>Регистрация</Text>
-          <View style={styles.form}>
-            <View style={styles.listInputFields}>
-              <TextInput style={styles.inputField} placeholder="Логин" />
-              <TextInput
-                style={styles.inputField}
-                placeholder="Адресс электронной почты"
-              />
-              <TextInput style={styles.inputField} placeholder="Пароль" />
-            </View>
-          </View>
-          <TouchableOpacity style={styles.btn}>
-            <Text style={styles.btnText}>Зарегистрироваться</Text>
-          </TouchableOpacity>
-          <Text style={styles.check}>Уже есть аккаунт? Войти</Text>
+    <View style={styles.formThunk}>
+      <View style={styles.photoThunc}>
+        <Image source={{ uri: "#" }} style={styles.photo} />
+        <TouchableOpacity style={styles.addPhotoBtn}>
+          <AddPhoto width={25} height={25} />
+        </TouchableOpacity>
+      </View>
+      <Text style={styles.title}>Регистрация</Text>
+      <View style={styles.form}>
+        <View style={styles.listInputFields}>
+          <TextInput style={styles.inputField} placeholder="Логин" />
+          <TextInput
+            style={styles.inputField}
+            placeholder="Адресс электронной почты"
+          />
+          <TextInput style={styles.inputField} placeholder="Пароль" />
         </View>
-      </ImageBackground>
+      </View>
+      <TouchableOpacity style={styles.registrationBtn}>
+        <Text style={styles.registrationBtnText}>Зарегистрироваться</Text>
+      </TouchableOpacity>
+      <View style={styles.checkBtnThunc}>
+        <Text style={styles.checkBtnDescription}>Уже есть аккаунт?</Text>
+        <TouchableOpacity>
+          <Text style={styles.checkBtn}>Войти</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -43,13 +47,6 @@ const RegistrationScreen = () => {
 export default RegistrationScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  image: {
-    flex: 1,
-    justifyContent: "flex-end",
-  },
   title: {
     fontWeight: 500,
     fontSize: 30,
@@ -59,6 +56,40 @@ const styles = StyleSheet.create({
 
     marginBottom: 33,
   },
+
+  photoThunc: {
+    position: "relative",
+    top: -60,
+
+    alignItems: "flex-end",
+    justifyContent: "flex-end",
+    alignSelf: "center",
+
+    width: 120,
+    height: 120,
+
+    backgroundColor: "#f6f6f6",
+
+    borderRadius: 16,
+
+    shadowColor: "#171717",
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  addPhotoBtn: {
+    position: "absolute",
+    right: -12,
+    bottom: 14,
+    width: 25,
+    height: 25,
+
+    shadowColor: "#171717",
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  photo: {},
   formThunk: {
     position: "relative",
     justifyContent: "center",
@@ -68,20 +99,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
   },
-  photoThunc: {
-    position: "relative",
-    top: -60,
-
-    alignSelf: "center",
-
-    width: 120,
-    height: 120,
-
-    backgroundColor: "#f6f6f6",
-
-    borderRadius: 16,
-  },
-  photo: {},
   form: {},
   listInputFields: {
     rowGap: 16,
@@ -100,23 +117,35 @@ const styles = StyleSheet.create({
     borderRadius: 8,
 
     backgroundColor: "#f6f6f6",
-  },
-  btn: {
-    marginHorizontal: 16,
-    backgroundColor: "#ff6c00",
-    borderRadius: 100,
-    alignItems: "center",
 
-    marginBottom: 16,
+    shadowColor: "#171717",
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
-  btnText: {
-    paddingVertical: 16,
+  registrationBtn: {
     fontSize: 16,
     lineHeight: 19,
+    marginBottom: 16,
   },
-  check: {
+  registrationBtnText: {
     textAlign: "center",
+    paddingVertical: 16,
+    marginHorizontal: 16,
+    borderRadius: 25,
+    backgroundColor: "#ff6c00",
 
-    marginBottom: 45,
+    overflow: "hidden",
+  },
+  checkBtnThunc: {
+    flexDirection: "row",
+    justifyContent: "center",
+    columnGap: 5,
+
+    marginBottom: 80,
+  },
+  checkBtnDescription: {},
+  checkBtn: {
+    color: "#1B4371",
   },
 });
